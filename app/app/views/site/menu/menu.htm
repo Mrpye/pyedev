@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Log in</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ @BASE }}/ui/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ @BASE }}/ui/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ @BASE }}/ui/admin/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition login-page">
+
+  <div style="width:600px;padding-top:200px">
+    <div class="login-logo">
+      <b>Dashboards</b>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="{{ @BASE }}/aci">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title text-center">ACI Dashboard</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <img src="{{ @BASE }}/ui/site/img/aci.png" class="img-fluid">
+              </div>
+            </div>
+          </a>
+          </div>
+          <div class="col-md-6">
+            <a href="{{ @BASE }}/widget/ship">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">APP Dynamics Dashboard</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <img src="{{ @BASE }}/ui/site/img/shipdash.png" class="img-fluid">
+              </div>
+           
+            </div>
+          </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+
+
+  </div>
+  <!-- /.login-box -->
+
+  <!-- jQuery -->
+  <script src="{{ @BASE }}/ui/admin/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ @BASE }}/ui/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ @BASE }}/ui/admin/js/adminlte.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<div class="content-wrapper">
+    <section class="content">
+ <!-- Content Header (Page header) -->
+ <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>{{ trim(@title) }}</h1>
+        </div>
+        <div class="col-sm-6">
+         
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{@title}}</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4 ">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6"></div>
+                        <div class="col-sm-12 col-md-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form action="{{@BASE}}/admin/import" method="post" enctype="multipart/form-data">
+                                Select Spread Sheet to upload:
+                                
+                                <div class="form-group">
+                                    <label for="name">Sheet Name</label>
+                                    <input type="text" class="form-control" name="import_sheet" id="import_sheet" placeholder="Name" value="{{@import_sheet}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Range</label>
+                                    <input type="text" class="form-control" name="import_range" id="import_range" placeholder="Name" value="{{@import_range}}">
+                                </div>
+
+                                <input type="file" name="fileToUpload" id="fileToUpload" accept=".xlsx, .xls">
+                                <input type="submit" value="Upload" name="submit">
+                              </form>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        
+    </section>
+</div>

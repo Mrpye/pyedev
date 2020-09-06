@@ -1,0 +1,212 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="/admin" class="brand-link">
+    <img src="{{ @BASE }}/ui/admin/img/navy.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      style="opacity: .8">
+    <span class="brand-text font-weight-light">Dashboard</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+        <li class="nav-header">Manage Forms</li>
+      
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Forms
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+        
+            <check if="{{  @level>0 }}">
+              <true>
+                <repeat group="{{ @data_edit }}" value="{{ @item }}">
+                  <li class="nav-item">
+                    <a href="/add_edit_view/view/{{ @item['name'] }}" id="collect-data" class="nav-link">
+                      <check if="{{  @item['icon']=='' }}">
+                        <true>
+                          <i class="nav-icon fas fa-database"></i>
+                        </true>
+                        <false>
+                          <i class="nav-icon {{ @item['icon'] }}"></i>
+                        </false>
+                      </check>
+                      <p>{{ @item['name'] }}</p>
+                    </a>
+                  </li>
+                </repeat>
+              </true>
+              <false>
+              
+                <li class="nav-item">
+                  <a href="/add_edit_view/view/config" id="collect-data" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>config</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/add_edit_view/view/widgets" id="collect-data" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>widgets</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/add_edit_view/view/dashboard" id="collect-data" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/add_edit_view/view/dashboard_list" id="collect-data" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>dashboard list</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/add_edit_view/view/target_rest_api" id="collect-data" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>target_rest_api</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/add_edit_view/view/event_system" id="collect-data" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>event_system</p>
+                  </a>
+                </li>
+              </false>
+            </check>
+           
+          </ul>
+        </li>
+
+
+
+
+        <li class="nav-header">Scheme</li>
+        <li class="nav-item">
+          <a href="#" id="rebuid-scheme" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>Rebuild scheme</p>
+            <span id="rebuild-state"></i></span>
+
+          </a>
+        </li>
+
+        <li class="nav-header">Dashboard</li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Dashboards
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <repeat group="{{ @dashboards }}" value="{{ @item }}">
+              <li class="nav-item">
+                <a href="{{@BASE}}{{ @item['url'] }}" target="_dash" id="collect-data" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>{{ @item['name'] }}</p>
+                </a>
+              </li>
+            </repeat>
+          </ul>
+        </li>
+
+        <li class="nav-header">Data</li>
+        <li class="nav-item">
+          <a href="#" id="rebuid-data" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>Collect Data</p>
+            <span id="data-state"></i></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{@BASE}}/admin/import" id="rebuid-data" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>Import Hardware</p>
+            <span id="data-state"></i></span>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>
+              Data
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <repeat group="{{ @data_tables }}" value="{{ @item }}">
+              <li class="nav-item">
+                <a href="/admin/data_table/{{ @item['table_name'] }}"  id="collect-data" class="nav-link">
+                  <i class="nav-icon fas fa-database"></i>
+                  <p>{{ @item['table_name'] }}</p>
+                </a>
+              </li>
+            </repeat>
+          </ul>
+        </li>
+
+
+        <li class="nav-header">User</li>
+        <li class="nav-item">
+          <a href="/admin/logout" id="rebuid-scheme" class="nav-link">
+            <i class="nav-icon fa fa-user"></i>
+            <p>Logout</p>
+            <span id="rebuild-state"></i></span>
+
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
+<script>
+  $("#rebuid-data").click(function () {
+    $("#data-state").html('<i class="fas fa-sync text-warning">');
+    $.post("{{ @BASE.'/api/collectdata'}}", {})
+      .done(function (data) {
+        if (data == "OK") {
+          $("#data-state").html('<i class="far fa-check-circle text-success">');
+        } else {
+          $("#data-state").html('<i class="far fa-check-circle text-danger">');
+        }
+      })
+      .fail(function () {
+        $("#data-state").html('<i class="far fa-check-circle text-danger">');
+      });
+  });
+
+
+  $("#rebuid-scheme").click(function () {
+    $("#rebuild-state").html('<i class="fas fa-sync text-warning">');
+    $.post("{{ @BASE.'/admin/BuildScheme'}}", {})
+      .done(function (data) {
+        if (data == "OK") {
+          $("#rebuild-state").html('<i class="far fa-check-circle text-success">');
+        } else {
+          $("#rebuild-state").html('<i class="far fa-check-circle text-danger">');
+        }
+      })
+      .fail(function () {
+        $("#rebuild-state").html('<i class="far fa-check-circle text-danger">');
+      });
+  });
+
+
+</script>

@@ -1,0 +1,21 @@
+{
+  "name": "mrpye/f3boilerplate",
+  "description": "F3 Boiler Plate Example",
+  "require": {
+    "bcosca/fatfree": "*.*",
+    "geerlingguy/ping":"*.*",
+    "phpseclib/phpseclib":"*.*",
+    "bt51/ntp": "dev-master",
+    "jwadhams/json-logic-php": "^1.4",
+    "phpoffice/phpspreadsheet": "*.*"
+  },
+  "authors": [
+    {
+      "name": "Andrew Pye",
+      "email": "stretchmasterp@googlemail.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "8"
+  }
+}

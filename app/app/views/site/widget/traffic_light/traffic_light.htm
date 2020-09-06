@@ -1,0 +1,28 @@
+<check if="{{ @refresh!=1 }}">
+
+  <div id="widget{{ @uid }}">
+</check>
+<a href="{{@deep_link}}" target="_appd">
+<div class="traffic-light-box {{ @style }}">
+
+  <div class="inner">
+    <h3>{{@hardware_group}}</h3>
+    <h4>{{@hardware_item}}</h4>
+    <h5>{{@metric}}</h5>
+    <div class="no-padding">
+      <p>
+        <repeat group="{{ @values }}" key="{{ @ikey }}" value="{{ @value }}">
+          {{ @ikey }}: {{ @value }}
+        </repeat>
+      </p>
+    </div>
+  </div>
+  <div class="icon">
+    <i class="{{ @icon }}"></i>
+  </div>
+</div>
+</a>
+
+<check if="{{ @refresh!=1 }}">
+  </div>
+</check>

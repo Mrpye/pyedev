@@ -1,0 +1,148 @@
+.no-padding {
+    padding: 0px !important
+}
+
+.sm-padding {
+    padding: 5px !important
+}
+
+.no-margin {
+    margin: 0px !important
+}
+
+
+.traffic-light-box {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .traffic-light-box > .inner {
+    padding: 10px;
+  }
+  
+  .traffic-light-box > .traffic-light-box-footer {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    padding: 2px 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+  }
+  
+  .traffic-light-box > .traffic-light-box-footer:hover {
+    background: rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+  }
+  
+  .traffic-light-box h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .traffic-light-box h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .traffic-light-box h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 2px 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+  @media (min-width: 992px) {
+    .col-xl-2 .traffic-light-box h3,
+    .col-lg-2 .traffic-light-box h3,
+    .col-md-2 .traffic-light-box h3 {
+      font-size: 1.6rem;
+    }
+    .col-xl-3 .traffic-light-box h3,
+    .col-lg-3 .traffic-light-box h3,
+    .col-md-3 .traffic-light-box h3 {
+      font-size: 1.6rem;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .col-xl-2 .traffic-light-box h3,
+    .col-lg-2 .traffic-light-box h3,
+    .col-md-2 .traffic-light-box h3 {
+      font-size: 2.2rem;
+    }
+    .col-xl-3 .traffic-light-box h3,
+    .col-lg-3 .traffic-light-box h3,
+    .col-md-3 .traffic-light-box h3 {
+      font-size: 2.2rem;
+    }
+  }
+  
+  .traffic-light-box p {
+    font-size: 1rem;
+  }
+  
+  .traffic-light-box p > small {
+    color: #f8f9fa;
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  .traffic-light-box h3,
+  .traffic-light-box p {
+    z-index: 5;
+  }
+  
+  .traffic-light-box .icon {
+    color: rgba(0, 0, 0, 0.15);
+    z-index: 0;
+  }
+  
+  .traffic-light-box .icon > i {
+    font-size: 90px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transition: -webkit-transform 0.3s linear;
+    transition: transform 0.3s linear;
+    transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  }
+  
+  .traffic-light-box .icon > i.fa, .traffic-light-box .icon > i.fas, .traffic-light-box .icon > i.far, .traffic-light-box .icon > i.fab, .traffic-light-box .icon > i.glyphicon, .traffic-light-box .icon > i.ion {
+    font-size: 70px;
+    top: 20px;
+  }
+  
+  .traffic-light-box:hover {
+    text-decoration: none;
+  }
+  
+  .traffic-light-box:hover .icon > i, .traffic-light-box:hover .icon > i.fa, .traffic-light-box:hover .icon > i.fas, .traffic-light-box:hover .icon > i.far, .traffic-light-box:hover .icon > i.fab, .traffic-light-box:hover .icon > i.glyphicon, .traffic-light-box:hover .icon > i.ion {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 767.98px) {
+    .traffic-light-box {
+      text-align: center;
+    }
+    .traffic-light-box .icon {
+      display: none;
+    }
+    .traffic-light-box p {
+      font-size: 12px;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }

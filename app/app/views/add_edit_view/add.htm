@@ -1,0 +1,139 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{{ trim(@title) }}</h1>
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><a href="{{@BASE}}/add_edit_view/view/{{@form_name}}">{{@form_name}}</a></h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+
+                            <!-- form start -->
+                            <form action="{{ @BASE.'/add_edit_view/add/'.@form_name}}" method="post" id="data-form">
+                               
+                                <div class="card-body">
+                                    <div class="tab-content" id="custom-tabs-one-tabContent">
+                                        <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel"
+                                            aria-labelledby="custom-tabs-one-home-tab">
+
+                                            <repeat group="{{ @fields }}" key="{{ @field_key }}"
+                                                value="{{ @field_value }}">
+
+                                               
+                                                <check
+                                                if="{{ @field_value['type']=='text' || @field_value['type']=='int' }}">
+                                                <div class="form-group">
+                                                    <label for="name">{{ @field_value['Title'] }}</label>
+                                                    <input type="text" class="form-control" name="{{ @field_key }}" data-inputmask="{{ @field_value['mask'] }}"
+                                                        id="{{ @field_key }}" placeholder="Name"
+                                                        value="{{ trim(@data[@field_key]) }}">
+                                                </div>
+                                            </check>
+                                            <check if="{{ @field_value['type']=='widget_list' }}">
+                                                <div class=" form-group">
+                                                    <label >{{ @field_value['Title'] }}</label>
+                                                    <select class="form-control" name="{{ @field_key }}" id="{{ @field_key }}">
+                                                        <repeat group="{{ @widget_list }}" value="{{ @v }}">
+                                                            <option  {{(trim(@data[@field_key])  == trim(@v['name'])) ? 'selected=selected' : '' }}>{{ trim(@v['name']) }}</option>
+                                                        </repeat>
+                                                    </select>
+                                                </div>
+                                            </check>
+                                            
+                                            <check if="{{ @field_value['type']=='select' }}">
+                                                <div class=" form-group">
+                                                    <label >{{ @field_value['Title'] }}</label>
+                                                    <select class="form-control" name="{{ @field_key }}" id="{{ @field_key }}">
+                                                        <repeat group="{{ @field_value['options'] }}" value="{{ @v }}">
+                                                            <option  {{(trim(@data[@field_key])  ==  @v) ? 'selected=selected' : '' }}>{{ @v }}</option>
+                                                        </repeat>
+                                                    </select>
+                                                </div>
+                                            </check>
+                                            <check if="{{ @field_value['type']=='scheme_list' }}">
+                                                <div class=" form-group">
+                                                    <label >{{ @field_value['Title'] }}</label>
+                                                    <select class="form-control" name="{{ @field_key }}" id="{{ @field_key }}">
+                                                        <repeat group="{{ @scheme_list }}" value="{{ @v }}">
+                                                            <option  {{(trim(@data[@field_key])  == trim(@v['name'])) ? 'selected=selected' : '' }}>{{ trim(@v['name']) }}</option>
+                                                        </repeat>
+                                                    </select>
+                                                </div>
+                                            </check>
+                                            <check if="{{ @field_value['type']=='textarea' }}">
+                                                <div class=" form-group">
+                                                    <label for="headers">{{ @field_value['Title'] }}</label>
+                                                    <textarea class="form-control" name="{{ @field_key }}"
+                                                        id="{{ @field_key }}" rows="{{@field_value['rows']}}"
+                                                        placeholder="Enter ..."> {{ trim(@data[@field_key]) }}</textarea>
+                                                </div>
+                                            </check>
+
+                                            <check if="{{ @field_value['type']=='bool' }}">
+                                                <div class=" form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <check if="{{ trim(@data[@field_key])==1 }}">
+                                                            <true>
+                                                                <input class="custom-control-input" type="checkbox"
+                                                                    name="{{ @field_key }}" id="{{ @field_key }}"
+                                                                    value='1' checked>
+                                                            </true>
+                                                            <false>
+                                                                <input class="custom-control-input" type="checkbox"
+                                                                    name="{{ @field_key }}" id="{{ @field_key }}">
+                                                            </false>
+                                                        </check>
+                                                        <label for="{{ @field_key }}"
+                                                            class="custom-control-label">{{ @field_value['Title'] }}</label>
+                                                    </div>
+                                                </div>
+                                            </check>
+
+
+
+
+
+
+                                            </repeat>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <input type="hidden" name="create" value="create" />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                                </div>
+
+                            </form>
+                            <!-- form end -->
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+</div>

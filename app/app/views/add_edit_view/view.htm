@@ -1,0 +1,68 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{{ trim(@title) }}</h1>
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Scheme</h3>
+                            
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <a href="{{ @BASE.'/add_edit_view/add/'.@form_name}}" class="btn btn-primary" >Add</a>
+                            <table class="table table-head-fixed text-nowrap" id="data-table">
+                                <thead>
+                                    <tr>
+                                        <repeat group="{{ @fields }}" key="{{ @field_key }}" value="{{ @field_value }}">
+                                            <th>{{ trim(@field_value['Title']) }}</th>
+                                        </repeat>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <repeat group="{{ @data }}"  value="{{ @v }}"></repeat>
+                                        <tr>
+                                            <repeat group="{{ @fields }}" key="{{ @field_key }}" value="{{ @field_value }}">
+                                                <check if="{{ @field_value['edit']==true }}">
+                                                    <true>
+                                                        <td><a href="{{@BASE}}/add_edit_view/edit/{{@form_name}}/{{ @v[@id_key] }}">{{ @v[@field_key] }}</a></td>
+                                                    </true>
+                                                    <false>
+                                                        <td>{{ substr(@v[@field_key], 0, 50)  }}</td>
+                                                    </false>
+                                                    
+                                                </check>
+                                            </repeat>
+                                        <td style="text-align:right;"><a  class="btn btn-danger" href="{{@BASE}}/add_edit_view/delete/{{@form_name}}/{{ @v[@id_key] }}">Delete</a></td>
+                                        </tr>
+                                    </repeat>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+</div>

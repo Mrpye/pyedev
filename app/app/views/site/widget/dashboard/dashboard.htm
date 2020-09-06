@@ -1,0 +1,50 @@
+
+
+
+
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <repeat group="{{ @row1 }}" value="{{ @r }}">
+          <div class="col-sm-{{@r['width']}}">
+            {{@r['widget']|raw}}
+          </div>
+        </repeat>
+        <!-- ./col -->
+      </div>
+      
+      <div class="row">
+        <repeat group="{{ @row2 }}" value="{{ @r }}">
+          <div class="col-lg-{{@r['width']}}">
+            {{@r['widget']|raw}}
+          </div>
+        </repeat>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <repeat group="{{ @row3 }}" value="{{ @r }}">
+          <div class="col-lg-{{@r['width']}}">
+            {{@r['widget']|raw}}
+          </div>
+        </repeat>
+        <!-- ./col -->
+      </div>
+
+      <div class="row">
+        <repeat group="{{ @row4 }}" value="{{ @r }}">
+          <div class="col-lg-{{@r['width']}}">
+            {{@r['widget']|raw}}
+          </div>
+        </repeat>
+        <!-- ./col -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

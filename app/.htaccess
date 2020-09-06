@@ -1,0 +1,27 @@
+# Enable rewrite engine and route requests to framework
+RewriteEngine On
+
+# Some servers require you to specify the `RewriteBase` directive
+# In such cases, it should be the path (relative to the document root)
+# containing this .htaccess file
+#
+RewriteBase /
+
+SetEnv DASH_DNS "mysql:host=localhost;port=3306;dbname="
+SetEnv DASH_DB "dashboard"
+SetEnv DASH_USER "root"
+
+RewriteRule ^(tmp)\/|\.ini$ - [R=404]
+
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L,QSA]
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+# enable PHP error logging
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag html_errors on
+php_flag  log_errors on
+php_value error_log  /var/www/html/tmp/PHP_errors.log

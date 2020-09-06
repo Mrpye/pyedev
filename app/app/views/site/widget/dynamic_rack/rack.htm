@@ -1,0 +1,81 @@
+<style>
+  .no-padding th {
+    padding: 5px;
+    color: white;
+  }
+  .no-padding td {
+    padding: 0px;
+    color: black;
+  }
+  .link a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+  }
+  .info-text{
+    color: black;
+  }
+  .body-text{
+    color: white;
+  }
+  th,
+  td {
+    font-size: 13px;
+  }
+
+</style>
+<table id="{{ @id }}" class="table table-bordered table-hover no-padding" style="border-radius: .25rem;">
+  <thead>
+    <tr>
+      <th colspan="3" class="text-center status-data" id="{{ @data[0]['Cabinet Name'] }}">{{ @data[0]['Cabinet Name'] }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <repeat group="{{ @data }}" value="{{ @item }}">
+
+      <check if="{{ @item['U']=='1' }}">
+        <tr>
+          <td class="text-center info-text" style="vertical-align: middle;">{{ @item['Row'] }}</td>
+          <check if="{{ @item['cable_managment']=='1' }}">
+            <true>
+              <td class="link text-center body-text status-cable" style="vertical-align: middle;color:white" id="{{ @item['Hostname'] }}">
+                {{ @item['Hostname'] }}</td>
+            </true>
+            <false>
+              <td class="link text-center body-text status-data" style="vertical-align: middle;" id="{{ @item['Hostname'] }}">
+                <a href="{{ @BASE}}/dashboard/dynamic_data/Hardware/{{ @item['Address'] }}">{{ @item['Hostname'] }}</a></td>
+            </false>
+          </check>
+          
+          <td class="text-center info-text" style="vertical-align: middle;">{{ @item['U'] }}</td>
+        </tr>
+      </check>
+
+      <check if="{{ @item['U']=='2' }}">
+        <tr>
+          <td class="text-center info-text" style="vertical-align: middle;">{{ @item['Row'] }}</td>
+          
+            <check if="{{ @item['cable_managment']=='1' }}">
+              <true>
+                <td rowspan="2" class="link text-center body-text status-cable" style="vertical-align: middle;color:white" id="{{ @item['Hostname'] }}">
+                {{ @item['Hostname'] }}</td>
+              </true>
+              <false>
+                <td rowspan="2" class="link text-center body-text status-data" style="vertical-align: middle;" id="{{ @item['Hostname'] }}">
+                <a href="{{ @BASE}}/dashboard/dynamic_data/Hardware/{{ @item['Address'] }}">{{ @item['Hostname'] }}</a></td>
+              </false>
+            </check>
+            
+          <td rowspan="2" class="text-center" style="vertical-align: middle;">{{ @item['U'] }}</td>
+        </tr>
+        <tr>
+          <td class="text-center info-text" style="vertical-align: middle;">{{ @item['Row']-1 }}</td>
+          <td style="display: none;"></td>
+          <td style="display: none;"></td>
+        </tr>
+      </check>
+
+    </repeat>
+  </tbody>
+</table>

@@ -1,0 +1,130 @@
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="{{ @BASE}}/ui/site/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ @BASE}}/ui/site/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+ // $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{ @BASE}}/ui/site/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS 
+<script src="{{ @BASE}}/ui/site/plugins/chart.js/Chart.min.js"></script>-->
+<!-- Sparkline
+<script src="{{ @BASE}}/ui/site/plugins/sparklines/sparkline.js"></script> -->
+<!-- JQVMap 
+<script src="{{ @BASE}}/ui/site/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="{{ @BASE}}/ui/site/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>-->
+<!-- jQuery Knob Chart -->
+<script src="{{ @BASE}}/ui/site/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="{{ @BASE}}/ui/site/plugins/moment/moment.min.js"></script>
+<script src="{{ @BASE}}/ui/site/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 
+<script src="{{ @BASE}}/ui/site/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>-->
+<!-- Summernote -->
+<script src="{{ @BASE}}/ui/site/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars
+<script src="{{ @BASE}}/ui/site/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+<!-- siteLTE App -->
+<script src="{{ @BASE}}/ui/site/js/adminlte.js"></script>
+<!-- siteLTE dashboard demo (This is only for demo purposes)
+<script src="{{ @BASE}}/ui/site/js/pages/dashboard.js"></script> -->
+<!-- siteLTE for demo purposes
+<script src="{{ @BASE}}/ui/site/js/demo.js"></script> -->
+<!-- DataTables -->
+<script src="{{ @BASE}}/ui/site/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ @BASE}}/ui/site/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ @BASE}}/ui/site/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ @BASE}}/ui/site/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ @BASE}}/ui/site/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+<script>
+  {{ @jsscripts| raw }}
+
+  //********************
+  //Code for the nav bar
+  //********************
+  function Remove_ALLClass(sel) {
+    $(sel).removeClass("text-warning");
+    $(sel).removeClass("text-danger");
+    $(sel).removeClass("text-success");
+  }
+
+  function NAVStatus() {
+    $.ajax({
+      url: "/api/events/ALL",
+      success: function (data) {
+        Remove_ALLClass("#nav-CIC");
+        Remove_ALLClass("#nav-RADIO");
+        Remove_ALLClass("#nav-CSR1");
+        data.forEach(function (e) {
+          if (e.status == 0) {
+            $("#nav-" + e.location).addClass("text-success");
+          } else if (e.status == 1) {
+            $("#nav-" + e.location).addClass("text-warning");
+          } else if (e.status == 2) {
+            $("#nav-" + e.location).addClass("text-danger");
+          }
+
+        });
+      }
+    });
+
+    $.ajax({
+      url: "/api/last_update",
+      success: function (data) {
+
+        $("#last_update").text("Update:" + data.last_data_collect);
+        $("#last_event").text("Event:" + data.last_event);
+        setTimeout(NAVStatus, 10000);
+      }
+    });
+  }
+  NAVStatus();
+  setTimeout(NAVStatus, 10000);
+
+//***********
+//Auto scroll
+//***********
+
+
+  var scroll_toggle=false;
+  var scroll_active=true;
+
+  $('#auto-scroll').click(function(){ 
+    
+      if($(this).prop("checked") == true){
+        scroll_active=true;
+      }
+      else if($(this).prop("checked") == false){
+        scroll_active=false;
+      } 
+      console.log("changes",scroll_active);
+  });
+
+function AutoScroll() {
+  if(scroll_active==true){
+    if(scroll_toggle==true){
+        window.scrollTo(0, 0);
+    }else if(scroll_toggle==false){
+        window.scrollTo(0,document.body.scrollHeight);
+    }
+    scroll_toggle=!scroll_toggle;
+  }
+    setTimeout(AutoScroll, {{@autoscroll}});
+}
+setTimeout(AutoScroll, {{@autoscroll}});
+
+</script>
+</body>
+
+</html>
