@@ -26,6 +26,7 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
+      {/*
       <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
@@ -49,16 +50,40 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
+*/}
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/material-kit-react?ref=mkr-navbar"
+          href="/article-page"
           color="transparent"
-          target="_blank"
+          target=""
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Download
+          <CloudDownload className={classes.icons} /> Articles
         </Button>
       </ListItem>
+
+      <ListItem className={classes.listItem}>
+        <Button
+          href="/music-page"
+          color="transparent"
+          target=""
+          className={classes.navLink}
+        >
+          <CloudDownload className={classes.icons} /> Music
+        </Button>
+      </ListItem>
+
+      <ListItem className={classes.listItem}>
+        <Button
+          href="/game-page"
+          color="transparent"
+          target=""
+          className={classes.navLink}
+        >
+          <CloudDownload className={classes.icons} /> Games
+        </Button>
+      </ListItem>
+
       <ListItem className={classes.listItem}>
         {/*<Tooltip title="Delete">
           <IconButton aria-label="Delete">
@@ -72,7 +97,7 @@ export default function HeaderLinks(props) {
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
-            href="https://twitter.com/CreativeTim?ref=creativetim"
+            href="https://twitter.com/Mrpye1974"
             target="_blank"
             color="transparent"
             className={classes.navLink}
@@ -81,40 +106,46 @@ export default function HeaderLinks(props) {
           </Button>
         </Tooltip>
       </ListItem>
+
+
       <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-facebook"
-          title="Follow us on facebook"
+          title="Follow us on Sound Cloud"
           placement={window.innerWidth > 959 ? "top" : "left"}
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
             color="transparent"
-            href="https://www.facebook.com/CreativeTim?ref=creativetim"
+            href="https://soundcloud.com/stretchmasterp"
             target="_blank"
             className={classes.navLink}
           >
-            <i className={classes.socialIcons + " fab fa-facebook"} />
+            <i className={classes.socialIcons + " fab fa-soundcloud"} />
           </Button>
         </Tooltip>
       </ListItem>
+     
       <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-tooltip"
-          title="Follow us on instagram"
+          title="Check out my games at Itch.io"
           placement={window.innerWidth > 959 ? "top" : "left"}
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
             color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+            href="https://stretchmasterp.itch.io/"
             target="_blank"
             className={classes.navLink}
           >
-            <i className={classes.socialIcons + " fab fa-instagram"} />
+            <i className={classes.socialIcons + " fab fa-itch-io"} />
           </Button>
         </Tooltip>
       </ListItem>
+      
+
+
     </List>
   );
 }

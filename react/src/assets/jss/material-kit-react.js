@@ -160,13 +160,20 @@ const title = {
   margin: "1.75rem 0 0.875rem",
   textDecoration: "none",
   fontWeight: "700",
+  fontSize:"2rem",
   fontFamily: `"Roboto Slab", "Times New Roman", serif`
 };
+const cardWrapTitle={
+  ...title,
+  wordWrap: "break-word"
+}
 
 const cardTitle = {
   ...title,
   marginTop: ".625rem"
 };
+
+
 
 const cardLink = {
   "& + $cardLink": {
@@ -180,6 +187,7 @@ const cardSubtitle = {
 };
 
 export {
+  cardWrapTitle,
   //variables
   drawerWidth,
   transition,

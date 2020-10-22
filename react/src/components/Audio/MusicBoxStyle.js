@@ -17,7 +17,7 @@ export const MusicBoxStyle = theme => ({
     overflow: 'auto',
     flexDirection: 'column',
     borderRadius: 15,
-    width:"760px"
+    //maxWidth:"760px"
 
   },
   modal: {

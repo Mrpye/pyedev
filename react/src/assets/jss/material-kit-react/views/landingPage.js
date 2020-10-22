@@ -1,4 +1,4 @@
-import { container, title } from "assets/jss/material-kit-react.js";
+import { container, title,cardWrapTitle } from "assets/jss/material-kit-react.js";
 
 const landingPageStyle = {
   container: {
@@ -6,14 +6,12 @@ const landingPageStyle = {
     color: "#FFFFFF",
     ...container
   },
-  title: {
+  title:{
     ...title,
-    display: "inline-block",
-    position: "relative",
-    marginTop: "30px",
-    minHeight: "32px",
-    color: "#FFFFFF",
-    textDecoration: "none"
+    color: "#FFFFFF"
+  },
+  cardWrapTitle:{
+    ...cardWrapTitle
   },
   subtitle: {
     fontSize: "1.313rem",

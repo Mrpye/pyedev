@@ -6,10 +6,10 @@ import { Router, Route, Switch } from "react-router-dom";
 import "assets/scss/material-kit-react.scss?v=1.9.0";
 
 // pages for this product
-import Components from "views/Components/Components.js";
 import MusicPage from "views/MusicPage/MusicPage.js";
-import ProfilePage from "views/ProfilePage/ProfilePage.js";
-import LoginPage from "views/LoginPage/LoginPage.js";
+import ArticlePage from "views/Articles/ArticlePage.js";
+import GamePage from "views/Games/GamePage.js";
+
 
 
 // This returns a promise - don't try to access any data until this promise resolves
@@ -21,9 +21,9 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route path="/music-page" component={MusicPage} />
-      <Route path="/profile-page" component={ProfilePage} />
-      <Route path="/login-page" component={LoginPage} />
-      <Route path="/" component={Components} />
+      <Route path="/article-page" component={ArticlePage} />
+      <Route path="/game-page" component={GamePage} />
+      <Route path="/" component={ArticlePage} />
     </Switch>
   </Router>,
   document.getElementById("root")

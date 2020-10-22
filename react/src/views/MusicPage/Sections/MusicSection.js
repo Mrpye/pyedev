@@ -3,7 +3,7 @@ import AudioList from "components/Audio/AudioList.js";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/musicStyle.js";
 const useStyles = styles;
 
-export default function TeamSection() {
+export default function MusicSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>

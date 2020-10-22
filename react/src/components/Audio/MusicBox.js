@@ -7,6 +7,7 @@ import Modal from '@material-ui/core/Modal';
 import AudioPlayer from "components/Audio/AudioPlayer.js";
 import Visual from "components/Audio/Visual.js";
 import classNames from "classnames";
+import ReactPlayer from "react-player"
 
 class MusicBox extends Component {
     constructor(props) {
@@ -31,40 +32,65 @@ class MusicBox extends Component {
 
             classes.imgFit
         );
-        return (
-            <Modal className={classes.modal}
-                open={this.props.open}
-                onClose={this.onClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                <div className={classes.paper}>
-                    <GridContainer>
-                        <GridItem xs={6} sm={6} md={6}>
-                            <h2 id="simple-modal-title">{this.props.title}</h2>
-                            <p id="simple-modal-description">{this.props.desc}</p>
-                            <Visual audio_src={this.state.audio_src} ></Visual>
-                            <AudioPlayer
-                                audioElementRef={audio => {
-                                    if (audio instanceof HTMLMediaElement) {
-                                        const ctx = new AudioContext();
-                                        let source = ctx.createMediaElementSource(audio);
-                                        source.connect(ctx.destination);
-                                        this.setState({ audio_src: source })
-                                    }
-                                }}
-                                crossOrigin="anonymous"
-                                music_src={this.props.music_src}
-                            ></AudioPlayer>
-                        </GridItem>
-                        <GridItem xs={6} sm={6} md={6}>
-                            <img src={this.props.cover_art} alt="..." className={classes.imgcover} />
-                        </GridItem>
-                    </GridContainer>
-                </div>
-            </Modal>
+        if (this.props.sound_cloud == true) {
+            return (
+                <Modal className={classes.modal}
+                    open={this.props.open}
+                    onClose={this.onClose}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                >
+                    <div className={classes.paper}>
+                        <GridContainer>
+                            <GridItem xs={12} sm={12} md={12}>
+                                <h2 id="simple-modal-title">{this.props.title}</h2>
+                                <p id="simple-modal-description">{this.props.desc}</p>
+                                <ReactPlayer
+                                width={"100%"}
+                                playing={true}
+                                    url={this.props.music_src}
+                                />
+                            </GridItem>
+                        </GridContainer>
+                    </div>
+                </Modal>
+            )
+        } else {
+            return (
+                <Modal className={classes.modal}
+                    open={this.props.open}
+                    onClose={this.onClose}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                >
+                    <div className={classes.paper}>
+                        <GridContainer>
+                            <GridItem xs={6} sm={6} md={6}>
+                                <h2 id="simple-modal-title">{this.props.title}</h2>
+                                <p id="simple-modal-description">{this.props.desc}</p>
+                                <Visual audio_src={this.state.audio_src} ></Visual>
+                                <AudioPlayer
+                                    audioElementRef={audio => {
+                                        if (audio instanceof HTMLMediaElement) {
+                                            const ctx = new AudioContext();
+                                            let source = ctx.createMediaElementSource(audio);
+                                            source.connect(ctx.destination);
+                                            this.setState({ audio_src: source })
+                                        }
+                                    }}
+                                    crossOrigin="anonymous"
+                                    music_src={this.props.music_src}
+                                ></AudioPlayer>
+                            </GridItem>
+                            <GridItem xs={6} sm={6} md={6}>
+                                <img src={this.props.cover_art} alt="..." className={classes.imgcover} />
+                            </GridItem>
+                        </GridContainer>
+                    </div>
+                </Modal>
 
-        );
+            );
+        }
     }
 }
 MusicBoxStyle.defaultProps = {
@@ -72,6 +98,7 @@ MusicBoxStyle.defaultProps = {
     music_src: null,
     title: "",
     desc: "",
+    sound_cloud: true
 
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -16,20 +16,34 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
-import MusicSection from "./Sections/MusicSection.js";
+import ArticleSection from "./Sections/ArticleSection.js";
+
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
-export default function MusicPage(props) {
+
+export default function ArticlePage(props) {
   const classes = useStyles();
+  const [banner, setBanner] = useState('code');
+  const [title, setTitle] = useState('Articles by StretchMasterP');
+  const [desc, setDesc] = useState('Check out some of my projects');
   const { ...rest } = props;
+
+  function SetBanner(data){
+    console.log("onOpened", data);
+    setBanner(data.category);
+    setTitle(data.title);
+    setDesc(data.description);
+  }
+
+
   return (
     <div>
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="Material Kit React"
+        brand="PyeDev.co.uk"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -38,14 +52,14 @@ export default function MusicPage(props) {
         }}
         {...rest}
       />
-      <Parallax filter image={require("assets/img/music-bg.jpg")}>
+      <Parallax filter image={require("assets/img/"+banner+"-bg.jpg")}>
         <div className={classes.container}>
         
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Music by StretchMasterP</h1>
+            <h1 className={classes.title} >{title}</h1>
               <h4>
-                Check out my tunes
+                {desc}
               </h4>
        
             </GridItem>
@@ -53,9 +67,8 @@ export default function MusicPage(props) {
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-         
-        <MusicSection />
+        <div className={classes.container}>      
+        <ArticleSection onBannerChange={SetBanner}/>
         </div>
       </div>
       <Footer />

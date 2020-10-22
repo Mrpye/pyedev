@@ -1,7 +1,8 @@
 {
   "name": "material-kit-react",
+  "homepage" :"http://www.PyeDev.co.uk",
   "version": "1.9.0",
-  "description": "Material Kit React. Coded by Creative Tim",
+  "description": "PyeDev.co.uk",
   "private": true,
   "main": "src/index.js",
   "dependencies": {
@@ -18,11 +19,14 @@
     "react-audio-player": "^0.13.0",
     "react-datetime": "2.16.3",
     "react-dom": "16.13.1",
+    "react-markdown": "^4.3.1",
+    "react-player": "^2.6.2",
     "react-responsive-audio-player": "^1.5.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "^3.4.3",
     "react-slick": "0.26.1",
-    "react-swipeable-views": "0.13.9"
+    "react-swipeable-views": "0.13.9",
+    "react-syntax-highlighter": "^13.5.3"
   },
   "devDependencies": {
     "@babel/cli": "7.10.1",
