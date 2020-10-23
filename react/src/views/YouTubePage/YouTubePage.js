@@ -16,12 +16,12 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
-import MusicSection from "./Sections/MusicSection.js";
+import YouTubeSection from "./Sections/YouTubeSection.js";
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
-export default function MusicPage(props) {
+export default function YouTubePage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -43,9 +43,9 @@ export default function MusicPage(props) {
         
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Music by StretchMasterP</h1>
+              <h1 className={classes.title}>YouTube by StretchMasterP</h1>
               <h4>
-                Check out my tunes
+                Check out my some of my YouTube Videos.
               </h4>
        
             </GridItem>
@@ -55,7 +55,7 @@ export default function MusicPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
          
-        <MusicSection />
+        <YouTubeSection />
         </div>
       </div>
       <Footer />

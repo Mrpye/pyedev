@@ -75,6 +75,17 @@ export default function HeaderLinks(props) {
 
       <ListItem className={classes.listItem}>
         <Button
+          href="/youtube-page"
+          color="transparent"
+          target=""
+          className={classes.navLink}
+        >
+          <CloudDownload className={classes.icons} /> Videos
+        </Button>
+      </ListItem>
+
+      <ListItem className={classes.listItem}>
+        <Button
           href="/game-page"
           color="transparent"
           target=""

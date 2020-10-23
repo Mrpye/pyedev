@@ -9,7 +9,7 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 import MusicPage from "views/MusicPage/MusicPage.js";
 import ArticlePage from "views/Articles/ArticlePage.js";
 import GamePage from "views/Games/GamePage.js";
-
+import YouTubePage from "views/YouTubePage/YouTubePage.js";
 
 
 // This returns a promise - don't try to access any data until this promise resolves
@@ -23,7 +23,8 @@ ReactDOM.render(
       <Route path="/music-page" component={MusicPage} />
       <Route path="/article-page" component={ArticlePage} />
       <Route path="/game-page" component={GamePage} />
-      <Route path="/" component={ArticlePage} />
+      <Route path="/youtube-page" component={YouTubePage} />
+      <Route path="/" component={MusicPage} />
     </Switch>
   </Router>,
   document.getElementById("root")
